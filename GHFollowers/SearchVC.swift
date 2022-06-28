@@ -15,7 +15,4 @@ class SearchVC: UIViewController {
         view.backgroundColor = .systemPink
     }
     
-
- 
-
 }

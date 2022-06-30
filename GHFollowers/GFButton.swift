@@ -4,6 +4,7 @@
 //
 //  Created by Christian Diaz on 6/27/22.
 //
+//  A reusable button for buttons throughout the app
 
 import UIKit
 

@@ -9,7 +9,7 @@
 import UIKit
 
 class GFButton: UIButton {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -25,6 +25,7 @@ class GFButton: UIButton {
         self.setTitle(title, for: .normal)
         configure()
     }
+    
     
     private func configure() {
         layer.cornerRadius = 10

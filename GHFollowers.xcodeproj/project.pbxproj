@@ -24,6 +24,7 @@
 		7B218AF9286EBCCA0025F2BF /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218AF8286EBCCA0025F2BF /* Follower.swift */; };
 		7B218AFB286EBDEE0025F2BF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218AFA286EBDEE0025F2BF /* User.swift */; };
 		7B218AFE286FD4BE0025F2BF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218AFD286FD4BE0025F2BF /* NetworkManager.swift */; };
+		7B218B01287104560025F2BF /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218B00287104560025F2BF /* GFError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		7B218AF8286EBCCA0025F2BF /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		7B218AFA286EBDEE0025F2BF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7B218AFD286FD4BE0025F2BF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7B218B00287104560025F2BF /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		7B13DA60286939780066221F /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				7B218AFF2871043E0025F2BF /* Utilities */,
 				7B218AFC286FD4AA0025F2BF /* Managers */,
 				7B218AF7286EBCAB0025F2BF /* Model */,
 				7B218AF6286E67530025F2BF /* Support */,
@@ -146,6 +149,14 @@
 				7B218AFD286FD4BE0025F2BF /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		7B218AFF2871043E0025F2BF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7B218B00287104560025F2BF /* GFError.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +241,7 @@
 				7B218AEA286D08840025F2BF /* GFTitleLabel.swift in Sources */,
 				7B218AF0286D0FB30025F2BF /* GFContainerView.swift in Sources */,
 				7B218AE8286BB3AA0025F2BF /* FollowerListVC.swift in Sources */,
+				7B218B01287104560025F2BF /* GFError.swift in Sources */,
 				7B218AFE286FD4BE0025F2BF /* NetworkManager.swift in Sources */,
 				7B13DA62286939780066221F /* AppDelegate.swift in Sources */,
 				7B13DA64286939780066221F /* SceneDelegate.swift in Sources */,

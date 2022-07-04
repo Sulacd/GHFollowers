@@ -13,10 +13,6 @@ class SearchVC: UIViewController {
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
     let calltoActionButton = GFButton(backGroundColor: .systemGreen, title: "Get Followers")
-    
-    var isUsernameEntered: Bool {
-        return !usernameTextField.text!.isEmpty
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +34,10 @@ class SearchVC: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    var isUsernameEntered: Bool {
+        return !usernameTextField.text!.isEmpty
+    }
+    
     // Function that is called whenever user hits return key if they input username, or the GFButton
     @objc func pushFollowerListVC() {
         guard isUsernameEntered else {
@@ -47,6 +47,7 @@ class SearchVC: UIViewController {
         }
         
         let followerListVC = FollowerListVC()
+        // FollowersListVC's username property will never be nil when it is segued
         followerListVC.username = usernameTextField.text
         followerListVC.title = usernameTextField.text
         navigationController?.pushViewController(followerListVC, animated: true)

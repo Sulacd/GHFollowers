@@ -9,7 +9,7 @@ import UIKit
 
 class GFAvatarImageView: UIImageView {
 
-    let placeholderImage = UIImage(named: "avatar-placeholder")!
+    var placeholderImage = UIImage(named: "avatar-placeholder")!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,6 +23,7 @@ class GFAvatarImageView: UIImageView {
     private func configure() {
         layer.cornerRadius = 10
         clipsToBounds = true
+        image = placeholderImage
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

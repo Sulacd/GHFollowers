@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+// Singleton Network Manager class that can be called anywhere
+
 class NetworkManager {
     static let shared = NetworkManager()
     let baseURL = "https://api.github.com/users/"

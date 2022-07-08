@@ -27,6 +27,7 @@
 		7B218B01287104560025F2BF /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218B00287104560025F2BF /* GFError.swift */; };
 		7B218B0428722E900025F2BF /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218B0328722E900025F2BF /* FollowerCell.swift */; };
 		7B218B0628722F9D0025F2BF /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218B0528722F9D0025F2BF /* GFAvatarImageView.swift */; };
+		7B218B0C28765ACF0025F2BF /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218B0B28765ACF0025F2BF /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		7B218B00287104560025F2BF /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
 		7B218B0328722E900025F2BF /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		7B218B0528722F9D0025F2BF /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		7B218B0B28765ACF0025F2BF /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				7B218B00287104560025F2BF /* GFError.swift */,
+				7B218B0B28765ACF0025F2BF /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				7B218AF0286D0FB30025F2BF /* GFContainerView.swift in Sources */,
 				7B218AE8286BB3AA0025F2BF /* FollowerListVC.swift in Sources */,
 				7B218B01287104560025F2BF /* GFError.swift in Sources */,
+				7B218B0C28765ACF0025F2BF /* UIHelper.swift in Sources */,
 				7B218AFE286FD4BE0025F2BF /* NetworkManager.swift in Sources */,
 				7B13DA62286939780066221F /* AppDelegate.swift in Sources */,
 				7B13DA64286939780066221F /* SceneDelegate.swift in Sources */,

@@ -5,14 +5,16 @@
 //  Created by Christian Diaz on 7/1/22.
 //
 
-import Foundation
+import UIKit
 
 
 // Singleton Network Manager class that can be called anywhere
 
 class NetworkManager {
+    
     static let shared = NetworkManager()
-    let baseURL = "https://api.github.com/users/"
+    private let baseURL = "https://api.github.com/users/"
+    let cache = NSCache<NSString, UIImage>()
     
     private init() {}
     

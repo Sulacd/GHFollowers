@@ -7,6 +7,8 @@
 
 import UIKit
 
+fileprivate var containerView: UIView!
+
 extension UIViewController {
     
     func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
@@ -24,5 +26,35 @@ extension UIViewController {
     
     @objc private func popVC() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func showLoadingView() {
+        containerView = UIView(frame: view.bounds)
+        containerView.backgroundColor = .systemBackground
+        containerView.alpha = 0
+        view.addSubview(containerView)
+        
+        // The view gradually appears
+        UIView.animate(withDuration: 0.25) {
+            containerView.alpha = 0.8
+        }
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
+        ])
+        
+        activityIndicator.startAnimating()
+    }
+    
+    func dismissLoadingView() {
+        DispatchQueue.main.async {
+            containerView.removeFromSuperview()
+            containerView = nil
+        }
     }
 }

@@ -51,7 +51,7 @@ class FollowerListVC: UIViewController {
                 if self.followers.isEmpty {
                     let message = "This user doesn't have any followers. Go follow them 😁"
                     DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message, in: self.view)
+                        self.showEmptyStateView(with: message)
                     }
                     return
                 }

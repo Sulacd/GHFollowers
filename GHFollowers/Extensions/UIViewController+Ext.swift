@@ -28,12 +28,13 @@ extension UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    // Implemented Loading View here to avoid complexity with calling and dismissing the view
     func showLoadingView() {
         containerView = UIView(frame: view.bounds)
         containerView.backgroundColor = .systemBackground
         containerView.alpha = 0
         view.addSubview(containerView)
-        
+         
         // The view gradually appears
         UIView.animate(withDuration: 0.25) {
             containerView.alpha = 0.8
@@ -56,5 +57,11 @@ extension UIViewController {
             containerView.removeFromSuperview()
             containerView = nil
         }
+    }
+    
+    func showEmptyStateView(with message: String, in view: UIView) {
+        let emptyStateView = GFEmptyStateView(message: message)
+        emptyStateView.frame = view.bounds
+        view.addSubview(emptyStateView)
     }
 }

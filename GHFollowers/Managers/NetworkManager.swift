@@ -14,6 +14,7 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     private let baseURL = "https://api.github.com/users/"
+    // Cache is implemented here because NetworkManager is a singleton and we only want once instance of Cache with one access at a time
     let cache = NSCache<NSString, UIImage>()
     
     private init() {}

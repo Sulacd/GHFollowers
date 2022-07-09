@@ -25,6 +25,7 @@ class GFAvatarImageView: UIImageView {
     func downloadImage(urlString: String) {
         let cacheKey = NSString(string: urlString)
         
+        // Check if image about to be downloaded is already in the cache
         if let image = cache.object(forKey: cacheKey) {
             self.image = image
             return

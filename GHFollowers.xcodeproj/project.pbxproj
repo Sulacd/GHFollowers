@@ -29,6 +29,7 @@
 		7B218B0628722F9D0025F2BF /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218B0528722F9D0025F2BF /* GFAvatarImageView.swift */; };
 		7B218B0C28765ACF0025F2BF /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218B0B28765ACF0025F2BF /* UIHelper.swift */; };
 		7B58C7822878F1020038BFE0 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B58C7812878F1020038BFE0 /* GFEmptyStateView.swift */; };
+		7BC3F897287B74F6007D08D3 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F896287B74F6007D08D3 /* UserInfoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		7B218B0528722F9D0025F2BF /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
 		7B218B0B28765ACF0025F2BF /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7B58C7812878F1020038BFE0 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		7BC3F896287B74F6007D08D3 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				7B218AE7286BB3AA0025F2BF /* FollowerListVC.swift */,
 				7B13DA75286A3B770066221F /* SearchVC.swift */,
 				7B13DA77286A3BAF0066221F /* FavoritesListVC.swift */,
+				7BC3F896287B74F6007D08D3 /* UserInfoVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				7B218B0428722E900025F2BF /* FollowerCell.swift in Sources */,
 				7B218B0628722F9D0025F2BF /* GFAvatarImageView.swift in Sources */,
 				7B218AEC286D0A310025F2BF /* GFBodyLabel.swift in Sources */,
+				7BC3F897287B74F6007D08D3 /* UserInfoVC.swift in Sources */,
 				7B218AF9286EBCCA0025F2BF /* Follower.swift in Sources */,
 				7B218AEA286D08840025F2BF /* GFTitleLabel.swift in Sources */,
 				7B218AF0286D0FB30025F2BF /* GFContainerView.swift in Sources */,

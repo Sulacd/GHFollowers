@@ -38,6 +38,6 @@ class GFTextField: UITextField {
         returnKeyType = .go
         placeholder = "Enter a username"
         //For testing purposes
-        text = "Sulacd"
+        text = "SAllen0400"
     }
 }

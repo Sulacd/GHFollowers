@@ -4,6 +4,7 @@
 //
 //  Created by Christian Diaz on 7/8/22.
 //
+// A full screen view used for when the user doesn't have any followers
 
 import UIKit
 

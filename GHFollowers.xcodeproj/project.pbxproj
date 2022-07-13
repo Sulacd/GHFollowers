@@ -33,6 +33,7 @@
 		7BC3F899287E53AF007D08D3 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F898287E53AF007D08D3 /* GFSecondaryTitleLabel.swift */; };
 		7BC3F89B287E555C007D08D3 /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F89A287E555C007D08D3 /* GFUserInfoHeaderVC.swift */; };
 		7BC3F89D287E8F73007D08D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F89C287E8F73007D08D3 /* Constants.swift */; };
+		7BC3F89F287F7838007D08D3 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F89E287F7838007D08D3 /* GFItemInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		7BC3F898287E53AF007D08D3 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		7BC3F89A287E555C007D08D3 /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
 		7BC3F89C287E8F73007D08D3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7BC3F89E287F7838007D08D3 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 			children = (
 				7B218AEF286D0FB30025F2BF /* GFContainerView.swift */,
 				7B58C7812878F1020038BFE0 /* GFEmptyStateView.swift */,
+				7BC3F89E287F7838007D08D3 /* GFItemInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				7B218B0C28765ACF0025F2BF /* UIHelper.swift in Sources */,
 				7B218AFE286FD4BE0025F2BF /* NetworkManager.swift in Sources */,
 				7B13DA62286939780066221F /* AppDelegate.swift in Sources */,
+				7BC3F89F287F7838007D08D3 /* GFItemInfoView.swift in Sources */,
 				7B13DA64286939780066221F /* SceneDelegate.swift in Sources */,
 				7BC3F89D287E8F73007D08D3 /* Constants.swift in Sources */,
 			);

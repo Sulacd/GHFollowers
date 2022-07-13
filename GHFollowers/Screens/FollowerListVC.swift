@@ -114,6 +114,8 @@ class FollowerListVC: UIViewController {
     }
 }
 
+// MARK: - Extensions
+
 extension FollowerListVC: UICollectionViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

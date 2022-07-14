@@ -4,6 +4,7 @@
 //
 //  Created by Christian Diaz on 7/13/22.
 //
+// A view that is contained in a stack view which displays 1 of 4 user infos
 
 import UIKit
 

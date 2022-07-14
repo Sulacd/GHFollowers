@@ -8,10 +8,12 @@
 import UIKit
 
 class UserInfoVC: UIViewController {
-    
+        
+    // Container views
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    
     var itemViews: [UIView] = []
     
     var username: String!
@@ -35,6 +37,8 @@ class UserInfoVC: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
+                    self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewTwo)
                 }
                 
             case .failure(let error):
@@ -47,6 +51,7 @@ class UserInfoVC: UIViewController {
         dismiss(animated: true)
     }
     
+    // Function that adds a Child VC's view to a container view as well as establishing a relation to the parent view
     func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)
@@ -76,9 +81,6 @@ class UserInfoVC: UIViewController {
                 itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
             ])
         }
-        
-        itemViewOne.backgroundColor = .systemPink
-        itemViewTwo.backgroundColor = .systemMint
         
         let itemHeight: CGFloat = 140
     

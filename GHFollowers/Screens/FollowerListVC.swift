@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FollowersListVCDelegate: AnyObject {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListVC: UIViewController {
     
     enum Section {
@@ -51,6 +55,7 @@ class FollowerListVC: UIViewController {
                 }
                 self.followers.append(contentsOf: followers)
                 
+                // If the user doesn't have any followers, an empty state view will appear
                 if self.followers.isEmpty {
                     let message = "This user doesn't have any followers. Go follow them 😁"
                     DispatchQueue.main.async {
@@ -100,6 +105,7 @@ class FollowerListVC: UIViewController {
             cell.set(follower: follower)
             return cell
         })
+        
     }
     
     func updateData(on followers: [Follower]) {
@@ -137,6 +143,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         
         let destVC = UserInfoVC()
         destVC.username = follower.login
+        destVC.delegate = self
         
         let navController = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)
@@ -155,6 +162,18 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate  {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
+        updateData(on: followers)
+    }
+}
+
+extension FollowerListVC: FollowersListVCDelegate {
+    func didRequestFollowers(for username: String) {
+        self.username = username
+        title = username
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        page = 1
+        getFollowers(username: username, page: page)
         updateData(on: followers)
     }
 }

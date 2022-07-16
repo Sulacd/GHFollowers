@@ -31,6 +31,7 @@ class NetworkManager {
             
             if let _ = error {
                 completed(.failure(.unableToComplete))
+                return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -46,6 +47,7 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
+                // Decode the JSON data into an array of followers
                 let followers = try decoder.decode([Follower].self, from: data)
                 completed(.success(followers))
             } catch {

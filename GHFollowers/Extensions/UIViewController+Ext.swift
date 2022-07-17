@@ -18,15 +18,7 @@ extension UIViewController {
             alertVC.modalPresentationStyle = .overFullScreen
             alertVC.modalTransitionStyle = .crossDissolve
             self.present(alertVC, animated: true)
-            
-            if self is FollowerListVC {
-                alertVC.containerView.actionButton.addTarget(self, action: #selector(self.popVC), for: .touchUpInside)
-            }
         }
-    }
-    
-    @objc private func popVC() {
-        self.navigationController?.popViewController(animated: true)
     }
     
     // Implemented Loading View here to avoid complexity with calling and dismissing the view

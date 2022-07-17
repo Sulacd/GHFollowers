@@ -39,6 +39,7 @@
 		7BC3F8A8287F98B0007D08D3 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F8A7287F98B0007D08D3 /* GFFollowerItemVC.swift */; };
 		7BC3F8AB287FA6AD007D08D3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F8AA287FA6AD007D08D3 /* String+Ext.swift */; };
 		7BC3F8AD287FABD2007D08D3 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F8AC287FABD2007D08D3 /* Date+Ext.swift */; };
+		7BF883F228838FDF00282DCE /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF883F128838FDF00282DCE /* PersistanceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		7BC3F8A7287F98B0007D08D3 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
 		7BC3F8AA287FA6AD007D08D3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		7BC3F8AC287FABD2007D08D3 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		7BF883F128838FDF00282DCE /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				7B218AFD286FD4BE0025F2BF /* NetworkManager.swift */,
+				7BF883F128838FDF00282DCE /* PersistanceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				7B218AF9286EBCCA0025F2BF /* Follower.swift in Sources */,
 				7B218AEA286D08840025F2BF /* GFTitleLabel.swift in Sources */,
 				7B218AF0286D0FB30025F2BF /* GFContainerView.swift in Sources */,
+				7BF883F228838FDF00282DCE /* PersistanceManager.swift in Sources */,
 				7BC3F89B287E555C007D08D3 /* GFUserInfoHeaderVC.swift in Sources */,
 				7BC3F899287E53AF007D08D3 /* GFSecondaryTitleLabel.swift in Sources */,
 				7B218AE8286BB3AA0025F2BF /* FollowerListVC.swift in Sources */,

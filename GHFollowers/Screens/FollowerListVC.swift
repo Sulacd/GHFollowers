@@ -41,6 +41,12 @@ class FollowerListVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    deinit {
+        //print("follower VC deinitialized")
+    }
+    
+// MARK: - Network Call
+    
     func getFollowers(username: String, page: Int) {
         showLoadingView()
         NetworkManager.shared.downloadFollowers(for: username, page: page) { [weak self] result in
@@ -49,7 +55,7 @@ class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let followers):
-                // The user will not have any additional followers of the last downloaded page pulled less than 100 followers
+                // The user will not have any additional followers if the last downloaded page pulled less than 100 followers
                 if followers.count < 100 {
                     self.hasMoreFollowers = false
                 }
@@ -72,10 +78,40 @@ class FollowerListVC: UIViewController {
         }
     }
     
+// MARK: - UI Configuration & Layout
         
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
+    }
+    
+    @objc func addButtonTapped() {
+        showLoadingView()
+        
+        NetworkManager.shared.downloadUser(for: username) { [weak self] result in
+            guard let self = self else {return}
+            self.dismissLoadingView()
+            
+            switch result {
+            case .success(let user):
+                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                
+                PersistanceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+                    guard let self = self else {return}
+                    
+                    guard let error = error else {
+                        self.presentGFAlertOnMainThread(title: "Success!", message: "\(user.login) has been added to your favorites list", buttonTitle: "Ok")
+                        return
+                    }
+                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+                }
+                
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
     }
     
     func configureSearchController() {
@@ -168,12 +204,12 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate  {
 
 extension FollowerListVC: FollowersListVCDelegate {
     func didRequestFollowers(for username: String) {
-        self.username = username
-        title = username
-        followers.removeAll()
-        filteredFollowers.removeAll()
-        page = 1
-        getFollowers(username: username, page: page)
-        updateData(on: followers)
+        
+        let usersFollowersVC = FollowerListVC()
+        usersFollowersVC.username = username
+        usersFollowersVC.title = username
+        
+        navigationController?.pushViewController(usersFollowersVC, animated: true)
+    
     }
 }

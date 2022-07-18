@@ -119,6 +119,7 @@ class UserInfoVC: UIViewController {
 
 // MARK: - Extensions
 
+// Tells the delegate (GFItemInfo VS subclasses) what do when the the buttons are tapped
 extension UserInfoVC: UserInfoVCDelegate {
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {

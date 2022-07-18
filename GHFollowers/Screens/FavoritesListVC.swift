@@ -21,6 +21,7 @@ class FavoritesListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getFavorites()
+        //tableView.reloadData()
     }
     
     func configureViewController() {
@@ -50,11 +51,14 @@ class FavoritesListVC: UIViewController {
                 if favorites.isEmpty {
                     self.showEmptyStateView(with: "No Favorites?😥\nAdd one on the follower screen!")
                 } else {
-                    self.favorites = favorites
                     DispatchQueue.main.async {
-                        self.tableView.reloadData()
                         // Brings the table view to the front if the empty state was displayed
                         self.view.bringSubviewToFront(self.tableView)
+                        if self.favorites == favorites {
+                            return
+                        }
+                        self.favorites = favorites
+                        self.tableView.reloadData()
                     }
                 }
             case .failure(let error):
@@ -78,9 +82,7 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favorites[indexPath.row]
-        let destVC = FollowerListVC()
-        destVC.username = favorite.login
-        destVC.title = favorite.login
+        let destVC = FollowerListVC(username: favorite.login)
         
         navigationController?.pushViewController(destVC, animated: true)
     }

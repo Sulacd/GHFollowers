@@ -41,6 +41,7 @@
 		7BC3F8AD287FABD2007D08D3 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F8AC287FABD2007D08D3 /* Date+Ext.swift */; };
 		7BF883F228838FDF00282DCE /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF883F128838FDF00282DCE /* PersistanceManager.swift */; };
 		7BF883F42884AE4000282DCE /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF883F32884AE4000282DCE /* FavoriteCell.swift */; };
+		7BF883F62885F24900282DCE /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF883F52885F24900282DCE /* GFTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		7BC3F8AC287FABD2007D08D3 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		7BF883F128838FDF00282DCE /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		7BF883F32884AE4000282DCE /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		7BF883F52885F24900282DCE /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 				7BC3F8A9287F999E007D08D3 /* ItemInfoVCs */,
 				7BC3F89A287E555C007D08D3 /* GFUserInfoHeaderVC.swift */,
 				7B218AED286D0B650025F2BF /* GFAlertVC.swift */,
+				7BF883F52885F24900282DCE /* GFTabBarController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				7BC3F89F287F7838007D08D3 /* GFItemInfoView.swift in Sources */,
 				7B13DA64286939780066221F /* SceneDelegate.swift in Sources */,
 				7BC3F89D287E8F73007D08D3 /* Constants.swift in Sources */,
+				7BF883F62885F24900282DCE /* GFTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

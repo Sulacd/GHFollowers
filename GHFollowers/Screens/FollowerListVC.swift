@@ -26,7 +26,17 @@ class FollowerListVC: UIViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-
+    
+    init(username: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.username = username
+        title = username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -187,6 +197,7 @@ extension FollowerListVC: UICollectionViewDelegate {
 }
 
 extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate  {
+    
     func updateSearchResults(for searchController: UISearchController) {
         // Dynamically captures a string that the user inputs
         guard let filter = searchController.searchBar.text, !filter.isEmpty else {return}
@@ -202,12 +213,11 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate  {
     }
 }
 
+// Tells the delegate (User Info VC) what to do when it requests a follower list of a user
 extension FollowerListVC: FollowersListVCDelegate {
+    
     func didRequestFollowers(for username: String) {
-        
-        let usersFollowersVC = FollowerListVC()
-        usersFollowersVC.username = username
-        usersFollowersVC.title = username
+        let usersFollowersVC = FollowerListVC(username: username)
         
         navigationController?.pushViewController(usersFollowersVC, animated: true)
     

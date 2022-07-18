@@ -40,6 +40,7 @@
 		7BC3F8AB287FA6AD007D08D3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F8AA287FA6AD007D08D3 /* String+Ext.swift */; };
 		7BC3F8AD287FABD2007D08D3 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC3F8AC287FABD2007D08D3 /* Date+Ext.swift */; };
 		7BF883F228838FDF00282DCE /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF883F128838FDF00282DCE /* PersistanceManager.swift */; };
+		7BF883F42884AE4000282DCE /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF883F32884AE4000282DCE /* FavoriteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		7BC3F8AA287FA6AD007D08D3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		7BC3F8AC287FABD2007D08D3 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		7BF883F128838FDF00282DCE /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		7BF883F32884AE4000282DCE /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				7B218B0328722E900025F2BF /* FollowerCell.swift */,
+				7BF883F32884AE4000282DCE /* FavoriteCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				7B218B0428722E900025F2BF /* FollowerCell.swift in Sources */,
 				7B218B0628722F9D0025F2BF /* GFAvatarImageView.swift in Sources */,
 				7B218AEC286D0A310025F2BF /* GFBodyLabel.swift in Sources */,
+				7BF883F42884AE4000282DCE /* FavoriteCell.swift in Sources */,
 				7BC3F897287B74F6007D08D3 /* UserInfoVC.swift in Sources */,
 				7BC3F8A6287F90B5007D08D3 /* GFRepoItemVC.swift in Sources */,
 				7B218AF9286EBCCA0025F2BF /* Follower.swift in Sources */,

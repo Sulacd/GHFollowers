@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol FollowersListVCDelegate: AnyObject {
-    func didRequestFollowers(for username: String)
-}
-
 class FollowerListVC: UIViewController {
     
     enum Section {
@@ -217,7 +213,7 @@ extension FollowerListVC: UISearchResultsUpdating {
 }
 
 // Tells the delegate (User Info VC) what to do when it requests a follower list of a user
-extension FollowerListVC: FollowersListVCDelegate {
+extension FollowerListVC: UserInfoVCDelegate {
     
     func didRequestFollowers(for username: String) {
         let usersFollowersVC = FollowerListVC(username: username)

@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol FollowerItemVCDelegate: AnyObject {
+    func didTapGetFollowers(for user: User)
+}
+
 class GFFollowerItemVC: GFItemInfoVC {
+    
+    weak var delegate: FollowerItemVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

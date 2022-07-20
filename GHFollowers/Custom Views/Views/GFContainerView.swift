@@ -18,6 +18,7 @@ class GFContainerView: UIView {
     
     init() {
         super.init(frame: .zero)
+        addSubViews(titleLabel, actionButton, messageLabel)
         configureContainerView()
         configureTitleLabel()
         configureActionButton()
@@ -37,7 +38,6 @@ class GFContainerView: UIView {
     }
     
     func configureTitleLabel() {
-        addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding),
@@ -48,7 +48,6 @@ class GFContainerView: UIView {
     }
     
     func configureActionButton() {
-        addSubview(actionButton)
         
         NSLayoutConstraint.activate([
             actionButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding),
@@ -59,7 +58,7 @@ class GFContainerView: UIView {
     }
     
     func configureMessageLabel() {
-        addSubview(messageLabel)
+        
         messageLabel.numberOfLines = 4
         
         NSLayoutConstraint.activate([

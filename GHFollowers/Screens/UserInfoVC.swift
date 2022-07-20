@@ -61,7 +61,7 @@ class UserInfoVC: UIViewController {
         self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
         self.add(childVC: repoItemVC, to: self.itemViewOne)
         self.add(childVC: followerItemVC, to: self.itemViewTwo)
-        self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
+        self.dateLabel.text = "GitHub since \(user.createdAt.convertToMonthYearFormat())"
     }
     
     // Function that adds a Child VC's view to a container view as well as establishing a relation to the parent view

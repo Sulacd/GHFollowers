@@ -12,7 +12,7 @@ class SearchVC: UIViewController {
     
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
-    let calltoActionButton = GFButton(backGroundColor: .systemGreen, title: "Get Followers")
+    let calltoActionButton = GFButton(color: .systemGreen, title: "Get Followers", systemImageName: "person.3")
 
     override func viewDidLoad() {
         super.viewDidLoad()

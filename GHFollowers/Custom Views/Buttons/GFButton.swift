@@ -15,10 +15,10 @@ class GFButton: UIButton {
         configure()
     }
     
-    convenience init(backGroundColor: UIColor, title: String) {
+    convenience init(color: UIColor, title: String, systemImageName: String) {
         self.init(frame: .zero)
-        self.backgroundColor = backGroundColor
-        self.setTitle(title, for: .normal)
+        configure()
+        self.set(color: color, title: title, systemImageName: systemImageName)
     }
     
     required init?(coder: NSCoder) {
@@ -26,15 +26,24 @@ class GFButton: UIButton {
     }
     
     private func configure() {
-        layer.cornerRadius = 10
-        setTitleColor(.white, for: .normal)
-        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        configuration = .filled()
+        configuration?.cornerStyle = .medium
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func set(backgroundColor: UIColor, title: String) {
-        self.backgroundColor = backgroundColor
-        setTitle(title, for: .normal)
+    func set(color: UIColor, title: String, systemImageName: String) {
+        configuration?.baseBackgroundColor = color
+        configuration?.baseForegroundColor = .white
+        configuration?.title = title
+        
+        configuration?.image = UIImage(systemName: systemImageName)
+        configuration?.imagePadding = 6
+        configuration?.imagePlacement = .trailing
+        
+        configurationUpdateHandler = { button in
+
+            button.transform = button.isHighlighted ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity
+            
+        }
     }
-    
 }

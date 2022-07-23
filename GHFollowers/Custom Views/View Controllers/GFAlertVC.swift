@@ -40,7 +40,7 @@ class GFAlertVC: UIViewController {
         view.addSubview(containerView)
         // Set custom text for our Alert Container
         containerView.titleLabel.text = alertTitle ?? "Something went wrong"
-        containerView.actionButton.setTitle(buttonTitle ?? "Ok", for: .normal)
+        containerView.actionButton.set(color: .systemPink, title: "Ok", systemImageName: "checkmark.circle")
         containerView.actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         containerView.messageLabel.text = message ?? "Unable to complete request"
         

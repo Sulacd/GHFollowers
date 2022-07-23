@@ -17,6 +17,7 @@ class FollowerListVC: UIViewController {
     var filteredFollowers: [Follower] = []
     var username: String!
     var page = 1
+    
     var hasMoreFollowers = true
     var isSearching = false
     var isLoadingMoreFollowers = false
@@ -48,11 +49,8 @@ class FollowerListVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    deinit {
-        //print("follower VC deinitialized")
-    }
     
-// MARK: - Network Call
+// MARK: - Network Call to Retrieve Followers of the User
     
     func getFollowers(username: String, page: Int) {
         showLoadingView()
@@ -64,22 +62,7 @@ class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let followers):
-                // The user will not have any additional followers if the last downloaded page pulled less than 100 followers
-                if followers.count < 100 {
-                    self.hasMoreFollowers = false
-                }
-                self.followers.append(contentsOf: followers)
-                
-                // If the user doesn't have any followers, an empty state view will appear
-                if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers. Go follow them 😁"
-                    DispatchQueue.main.async {
-                        self.showEmptyStateView(with: message)
-                    }
-                    return
-                }
-                // Begins to dispaly the collection view once the data has been successfully retrived
-                self.updateData(on: self.followers)
+                self.updateUI(with: followers)
                 
             case .failure(let errorMessage):
                 self.presentGFAlertOnMainThread(title: "Bad stuff Happened", message: errorMessage.rawValue, buttonTitle: "Ok")
@@ -88,14 +71,27 @@ class FollowerListVC: UIViewController {
         }
     }
     
-// MARK: - UI Configuration & Layout
+    func updateUI(with followers: [Follower]) {
+        // The user will not have any additional followers if the last downloaded page pulled less than 100 followers
+        if followers.count < 100 {
+            self.hasMoreFollowers = false
+        }
+        self.followers.append(contentsOf: followers)
         
-    func configureViewController() {
-        view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        navigationItem.rightBarButtonItem = addButton
+        // If the user doesn't have any followers, an empty state view will appear
+        if self.followers.isEmpty {
+            let message = "This user doesn't have any followers. Go follow them 😁"
+            DispatchQueue.main.async {
+                self.showEmptyStateView(with: message)
+            }
+            return
+        }
+        // Begins to dispaly the collection view once the data has been successfully retrived
+        self.updateData(on: self.followers)
     }
+    
+    
+// MARK: - '+' Button Functionality
     
     @objc func addButtonTapped() {
         showLoadingView()
@@ -106,22 +102,36 @@ class FollowerListVC: UIViewController {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                
-                PersistanceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-                    guard let self = self else {return}
-                    
-                    guard let error = error else {
-                        self.presentGFAlertOnMainThread(title: "Success!", message: "\(user.login) has been added to your favorites list", buttonTitle: "Ok")
-                        return
-                    }
-                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-                }
+                self.addUserToFavorites(user: user)
                 
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
+    }
+    
+    func addUserToFavorites(user: User) {
+        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        
+        PersistanceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+            guard let self = self else {return}
+            
+            guard let error = error else {
+                self.presentGFAlertOnMainThread(title: "Success!", message: "\(user.login) has been added to your favorites list", buttonTitle: "Ok")
+                return
+            }
+            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+        }
+    }
+    
+    
+// MARK: - UI Configuration & Layout
+        
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
     
     func configureSearchController() {
@@ -139,6 +149,9 @@ class FollowerListVC: UIViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
+    
+    
+// MARK: - Data Source Configuration
     
     // Function that connects a diffable data source to our collection view
     func configureDataSource() {
@@ -164,6 +177,7 @@ class FollowerListVC: UIViewController {
         }
     }
 }
+
 
 // MARK: - Extensions
 

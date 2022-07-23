@@ -25,24 +25,23 @@ enum PersistanceManager {
         retrieveFavorites { result in
             switch result {
             // If we successfully retrieved the persisted data array of favorites, we can either add or remove a follower
-            case .success(let favorites):
-                var retrievedFavorites = favorites
-                
+            case .success(var favorites):
+            
                 switch actionType {
                 case .add:
                     // When adding a new favorite, first checks to see if that follower is already in the favorites array
-                    guard !retrievedFavorites.contains(favorite) else {
+                    guard !favorites.contains(favorite) else {
                         completed(.alreadyInFavorites)
                         return
                     }
                     // If the new favorite is not persisted, append it to the copied array that will be persisted
-                    retrievedFavorites.append(favorite)
+                    favorites.append(favorite)
                 case .remove:
                     // Removes all instances of the specified user in the copied favorites array
-                    retrievedFavorites.removeAll {$0.login == favorite.login}
+                    favorites.removeAll {$0.login == favorite.login}
                 }
                 // Saves the copied array in User defaults and passes back an error if something went wrong while encoding
-                completed(save(favorites: retrievedFavorites))
+                completed(save(favorites: favorites))
                 
             case .failure(let error):
                 completed(error)

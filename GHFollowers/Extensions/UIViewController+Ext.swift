@@ -12,13 +12,11 @@ fileprivate var containerView: UIView!
 
 extension UIViewController {
     
-    func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
-        DispatchQueue.main.async {
-            let alertVC = GFAlertVC(title: title, message: message, buttonTitle: buttonTitle)
-            alertVC.modalPresentationStyle = .overFullScreen
-            alertVC.modalTransitionStyle = .crossDissolve
-            self.present(alertVC, animated: true)
-        }
+    func presentGFAlert(title: String, message: String, buttonTitle: String) {
+        let alertVC = GFAlertVC(title: title, message: message, buttonTitle: buttonTitle)
+        alertVC.modalPresentationStyle = .overFullScreen
+        alertVC.modalTransitionStyle = .crossDissolve
+        self.present(alertVC, animated: true)
     }
     
     // Implemented Loading View here to avoid complexity with calling and dismissing the view

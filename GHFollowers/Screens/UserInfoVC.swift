@@ -35,17 +35,14 @@ class UserInfoVC: UIViewController {
 // MARK: - Network Call & Child View Controllers UI Configuration
     
     func getUserInfo() {
-        NetworkManager.shared.downloadUser(for: username) { [weak self] result in
-            guard let self = self else {return}
-            
-            switch result {
-            case .success(let user):
-                DispatchQueue.main.async {
-                    self.configureUIElements(with: user)
-                }
-                
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+        
+        Task {
+            do {
+                let user = try await NetworkManager.shared.downloadUser(for: username)
+                configureUIElements(with: user)
+            } catch {
+                let gfError = error as! GFError
+                presentGFAlert(title: "Something Went Wrong", message: gfError.rawValue, buttonTitle: "Ok")
             }
         }
     }
@@ -122,7 +119,7 @@ class UserInfoVC: UIViewController {
 extension UserInfoVC: RepoItemVCDelegate, FollowerItemVCDelegate {
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
-            presentGFAlertOnMainThread(title: "Invalid URL", message: "The URL attached to this user is invalid", buttonTitle: "Ok")
+            presentGFAlert(title: "Invalid URL", message: "The URL attached to this user is invalid", buttonTitle: "Ok")
             return
         }
         presentSafariVC(with: url)
@@ -130,7 +127,7 @@ extension UserInfoVC: RepoItemVCDelegate, FollowerItemVCDelegate {
     
     func didTapGetFollowers(for user: User) {
         guard user.followers > 0 else {
-            presentGFAlertOnMainThread(title: "No followers", message: "This user does not have any followers 😭", buttonTitle: "So Sad")
+            presentGFAlert(title: "No followers", message: "This user does not have any followers 😭", buttonTitle: "So Sad")
             return
         }
         delegate.didRequestFollowers(for: user.login)

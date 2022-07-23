@@ -56,19 +56,33 @@ class FollowerListVC: UIViewController {
         showLoadingView()
         isLoadingMoreFollowers = true
         
-        NetworkManager.shared.downloadFollowers(for: username, page: page) { [weak self] result in
-            guard let self = self else {return}
-            self.dismissLoadingView()
-            
-            switch result {
-            case .success(let followers):
-                self.updateUI(with: followers)
-                
-            case .failure(let errorMessage):
-                self.presentGFAlertOnMainThread(title: "Bad stuff Happened", message: errorMessage.rawValue, buttonTitle: "Ok")
+        Task {
+            do {
+                let followers = try await NetworkManager.shared.downloadFollowers(for: username, page: page)
+                updateUI(with: followers)
+                dismissLoadingView()
+                isLoadingMoreFollowers = false
+            } catch {
+                let gfError = error as! GFError
+                presentGFAlert(title: "Something went wrong", message: gfError.rawValue, buttonTitle: "Ok")
+                dismissLoadingView()
+                isLoadingMoreFollowers = false
             }
-            self.isLoadingMoreFollowers = false
         }
+        
+//        NetworkManager.shared.downloadFollowers(for: username, page: page) { [weak self] result in
+//            guard let self = self else {return}
+//            self.dismissLoadingView()
+//
+//            switch result {
+//            case .success(let followers):
+//                self.updateUI(with: followers)
+//
+//            case .failure(let errorMessage):
+//                self.presentGFAlertOnMainThread(title: "Bad stuff Happened", message: errorMessage.rawValue, buttonTitle: "Ok")
+//            }
+//            self.isLoadingMoreFollowers = false
+//        }
     }
     
     func updateUI(with followers: [Follower]) {
@@ -96,16 +110,15 @@ class FollowerListVC: UIViewController {
     @objc func addButtonTapped() {
         showLoadingView()
         
-        NetworkManager.shared.downloadUser(for: username) { [weak self] result in
-            guard let self = self else {return}
-            self.dismissLoadingView()
-            
-            switch result {
-            case .success(let user):
-                self.addUserToFavorites(user: user)
-                
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+        Task {
+            do {
+                let user = try await NetworkManager.shared.downloadUser(for: username)
+                addUserToFavorites(user: user)
+                dismissLoadingView()
+            } catch {
+                let gfError = error as! GFError
+                presentGFAlert(title: "Somethhing Went Wrong", message: gfError.rawValue, buttonTitle: "Ok")
+                dismissLoadingView()
             }
         }
     }
@@ -117,10 +130,14 @@ class FollowerListVC: UIViewController {
             guard let self = self else {return}
             
             guard let error = error else {
-                self.presentGFAlertOnMainThread(title: "Success!", message: "\(user.login) has been added to your favorites list", buttonTitle: "Ok")
+                DispatchQueue.main.async {
+                    self.presentGFAlert(title: "Success!", message: "\(user.login) has been added to your favorites list", buttonTitle: "Ok")
+                }
                 return
             }
-            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            DispatchQueue.main.async {
+                self.presentGFAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
         }
     }
     

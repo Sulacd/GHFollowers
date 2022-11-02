@@ -44,8 +44,6 @@ class GFAlertVC: UIViewController {
         containerView.actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         containerView.messageLabel.text = message ?? "Unable to complete request"
         
-        
-        
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

@@ -20,6 +20,7 @@ class NetworkManager {
     
     private init() {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        // Allows us to obtain a Date object directly from decoding JSON
         decoder.dateDecodingStrategy = .iso8601
     }
     

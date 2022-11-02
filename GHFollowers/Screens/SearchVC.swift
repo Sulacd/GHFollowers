@@ -27,7 +27,7 @@ class SearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         usernameTextField.text = ""
-        // Shows the nav bar whenever the search view is displayed
+        // Hides the nav bar whenever the search view is displayed
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     

@@ -67,7 +67,7 @@ enum PersistanceManager {
         }
     }
     
-    // Saves a the favorite followers array
+    // Saves the favorite followers array to User Defaults
     static func save(favorites: [Follower]) -> GFError? {
         do {
             let encoder = JSONEncoder()

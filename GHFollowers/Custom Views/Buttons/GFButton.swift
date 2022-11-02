@@ -17,7 +17,6 @@ class GFButton: UIButton {
     
     convenience init(color: UIColor, title: String, systemImageName: String) {
         self.init(frame: .zero)
-        configure()
         self.set(color: color, title: title, systemImageName: systemImageName)
     }
     

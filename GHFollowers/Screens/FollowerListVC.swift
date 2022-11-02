@@ -127,9 +127,9 @@ class FollowerListVC: UIViewController {
         let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
         
         PersistanceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-            guard let self = self else {return}
+            guard let self else {return}
             
-            guard let error = error else {
+            guard let error else {
                 DispatchQueue.main.async {
                     self.presentGFAlert(title: "Success!", message: "\(user.login) has been added to your favorites list", buttonTitle: "Ok")
                 }
@@ -180,7 +180,6 @@ class FollowerListVC: UIViewController {
             cell.set(follower: follower)
             return cell
         })
-        
     }
     
     func updateData(on followers: [Follower]) {
@@ -222,7 +221,9 @@ extension FollowerListVC: UICollectionViewDelegate {
         destVC.delegate = self
         
         let navController = UINavigationController(rootViewController: destVC)
+        
         present(navController, animated: true)
+        
     }
 }
 
@@ -253,3 +254,4 @@ extension FollowerListVC: UserInfoVCDelegate {
     
     }
 }
+
